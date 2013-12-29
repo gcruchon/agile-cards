@@ -5,5 +5,14 @@
 
 // Demonstrate how to register services
 // In this case it is a simple value service.
-angular.module('myApp.services', []).
-  value('version', '0.1');
+var agileCardsServices = angular.module('agileCardsApp.services', ['ngResource']);
+
+agileCardsServices.value('version', '0.1');
+
+agileCardsServices .factory('Card', ['$resource',
+    function($resource){
+        return $resource('cards/:cardId.json', {}, {
+            query: {method:'GET', params:{cardId:'cards'}, isArray:true}
+        });
+    }
+]);

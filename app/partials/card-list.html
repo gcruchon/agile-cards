@@ -1,0 +1,6 @@
+<p>Here is a list of all cards</p>
+<ul>
+    <li ng-repeat="card in cards">
+        <a ng-href="#/card/{{$index}}/{{card.id}}">{{card.name}}</a>
+    </li>
+</ul>

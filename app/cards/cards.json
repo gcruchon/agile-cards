@@ -1,0 +1,22 @@
+[
+    {
+        "created": "2013-12-28T21:34:00",
+        "id": "how-to-run-a-lean-coffee",
+        "name": "How to run a Lean Coffee",
+        "snippet": "Learn how to use Lean Coffee to run a lightweight, structured, agenda-less meeting. Brought to you by AgileWeekly",
+        "link": "http://www.youtube.com/watch?v=zhG-A-kRPAU",
+        "type": "video",
+        "tags": ["meeting","lean"],
+        "lang": "en"
+    },
+    {
+        "created": "2013-12-28T21:37:00",
+        "id": "scrumday-2012-le-bocal-a-con-rencontre-les-methodes-agiles",
+        "name": "ScrumDay 2012 : le bocal à con rencontre les méthodes agiles",
+        "snippet": "Le 27 mai 2012, Sylvaine Pasquale est intervenue lors de la conférence Sweet Rupture de Laurent Sarrazin, dans le cadre du ScrumDay 2012, pour présenter la métaphore du bocal à con, son utilité et les moyens d’en sortir lorsqu’on se retrouve mis en bocal par autrui. Voici la vidéo.",
+        "link": "http://www.ithaquecoaching.com/articles/bocal-con-agile-scrumday-2012-3843.html",
+        "type": "article",
+        "tags": ["human resources","lean"],
+        "lang": "fr"
+    }
+]
