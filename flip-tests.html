@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>To test flipping</title>
+    <style>
+        /* entire container, keeps perspective */
+        .flip-container {
+            perspective: 1000;
+            width: 100%;
+            height: 100%;
+        }
+
+        .flipper {
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            position: relative;
+            width: 332px;
+            height: 492px;
+        }
+        .flipper.flip {
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .card {
+            width: 320px;
+            height: 480px;
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            border: 2px solid #aaaaaa;
+            -moz-box-shadow: 3px 3px 5px #ccccccc;
+            -webkit-box-shadow: 3px 3px 5px #cccccc;
+            box-shadow: 3px 3px 5px #cccccc;
+
+        }
+
+        /* front pane, placed above back */
+        .front {
+            z-index: 2;
+            background: #eeeeee;
+            left: 0;
+        }
+
+        /* back, initially hidden pane */
+        .back {
+            right: 0;
+            background: #ffffff;
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        var ANIMATION_DURATION = 400;
+        var ANIMATION_EASING = 'swing';
+        function showBackSide(){
+            $('#flipper').addClass('flip');
+            setTimeout("expandBackSide();", 1000);
+            return false;
+        }
+        function expandBackSide(){
+            var id = 'flipper'
+            var $container = $('.flip-container');
+            var w = $container.innerWidth();
+            var h = $(window).innerHeight() -20;
+            console.log(h)
+            $('#' + id).css({"width":w, "height": h});
+            $('#' + id + ' .back').animate({"width":w - 12, "height": h - 12}, ANIMATION_DURATION, ANIMATION_EASING);
+        }
+        function showFrontSide(){
+            var id = 'flipper'
+            $('#' + id + ' .back').animate({"width":320, "height": 480}, ANIMATION_DURATION, ANIMATION_EASING, function(){
+                $('#' + id).css({"width":332, "height": 492}).removeClass('flip');
+            });
+            return false;
+        }
+    </script>
+</head>
+<body>
+<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+    <div id="flipper" class="flipper">
+        <div class="card front">
+            <h2>Avant</h2>
+            <p><a href="#" onclick="return showBackSide();">En savoir plus...</a></p>
+        </div>
+        <div class="card back">
+            <h2>Arrière</h2>
+            <p><a href="#" onclick="return showFrontSide();">Fermer</a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
